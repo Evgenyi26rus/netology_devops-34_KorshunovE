@@ -22,3 +22,40 @@ push - так как изменения можно внести сразу во 
 - [Vagrant](https://github.com/netology-code/devops-materials), рекомендуем версию 2.3.4(старшие версии могут возникать проблемы интеграции с ansible)
 - [Terraform](https://github.com/netology-code/devops-materials/blob/master/README.md)  версии 1.5.Х (1.6.х может вызывать проблемы с яндекс-облаком),
 - Ansible.
+
+korshunovi@korshunovi:~$ virtualbox --help | head -n 1 | awk '{print $NF}'
+v6.1.38_Ubuntu
+------------------------
+
+korshunovi@korshunovi:~$ vagrant --version
+Vagrant 2.3.4
+
+------------------------
+
+korshunovi@korshunovi:~$ terraform --version
+Terraform v1.5.7
+on linux_amd64
+
+Your version of Terraform is out of date! The latest version
+is 1.6.3. You can update by downloading from https://www.terraform.io/downloads.html
+
+------------------------
+
+korshunovi@korshunovi:~/.local/pipx/venvs/ansible/bin$ ansible --version
+ansible 2.9.6
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/korshunovi/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.8.10 (default, May 26 2023, 14:05:08) [GCC 9.4.0]
+
+## Задача 4 
+
+Воспроизведите практическую часть лекции самостоятельно.
+
+- Создайте виртуальную машину.
+- Зайдите внутрь ВМ, убедитесь, что Docker установлен с помощью команды
+
+![Vagrant.jpeg](Vagrant.jpeg)
+![Ansible1.jpeg](Ansible1.jpeg)
+![Ansible2.jpeg](Ansible2.jpeg)
