@@ -104,7 +104,7 @@ random_password.random_string: Refreshing state... [id=none]
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
-...
+.....
 Plan: 1 to add, 0 to change, 0 to destroy.
 docker_container.hello_world: Creating...
 docker_container.hello_world: Creation complete after 2s [id=819bdfdf2ad4e6db014bb270c79baca5f80466eb21c4b3305e80149fb7740aa4]
@@ -137,8 +137,9 @@ The docs for the terraform resource docker_image show the reason terraform attem
 ### Задание 2*
 
 1. Изучите в документации provider [**Virtualbox**](https://docs.comcloud.xyz/providers/shekeriev/virtualbox/latest/docs) от 
-shekeriev.
+shekeriev
 2. Создайте с его помощью любую виртуальную машину. Чтобы не использовать VPN, советуем выбрать любой образ с расположением в GitHub из [**списка**](https://www.vagrantbox.es/).
 
 В качестве ответа приложите plan для создаваемого ресурса. Примечание: создание самого ресурса может вызывать различные ошибки взаимодействия с virtualbox. Тк virtualbox в данном случае не является целью обучения - можете не создавать саму виртуальную машину.
 
+![4.1.2.1.png](4.1.2.1.png).
