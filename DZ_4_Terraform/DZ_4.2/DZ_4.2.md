@@ -52,9 +52,26 @@ with yandex_compute_instance.platform,
 ### Задание 3
 
 1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
+
+[vms_platform.tf](src%2Fvms_platform.tf)
+
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b"
+
+[main.tf](src%2Fmain.tf)
+
 3. Примените изменения.
 
+Не получилось вторую машину завести  в зону "ru-central1-b", при terraform apply получаю ошибку, ниже. Сами конфигурации в файлах выше.
+
+``` 
+Error: Error while requesting API to create network: server-request-id = 997146ea-e9ea-4298-ac12-d7af16a74ddf server-trace-id = 433d65e1af39b782:92f5460bba4a22b0:433d65e1af39b782:1 client-request-id = f0ec308a-a0ec-4e92-9a93-f6c139aeb2ed client-trace-id = 701e9fa9-46ef-4f31-87b4-944a1452f2bb rpc error: code = AlreadyExists desc = Network with name develop already exists
+│ 
+│   with yandex_vpc_network.develop2,
+│   on main.tf line 45, in resource "yandex_vpc_network" "develop2":
+│   45: resource "yandex_vpc_network" "develop2" {
+```
+
+![4.2.3.png](4.2.3.png)
 
 ### Задание 4
 
