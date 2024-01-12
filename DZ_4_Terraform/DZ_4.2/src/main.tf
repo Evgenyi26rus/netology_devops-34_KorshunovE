@@ -43,13 +43,13 @@ resource "yandex_compute_instance" "platform" {
 # 2 VM vm_db_
 
 resource "yandex_vpc_network" "develop2" {
-  name = var.vpc_name
+  name = var.vpc_name2
 }
 resource "yandex_vpc_subnet" "develop2" {
-  name           = var.vpc_name
+  name           = var.vpc_name2
   zone           = var.default_zone2
   network_id     = yandex_vpc_network.develop2.id
-  v4_cidr_blocks = var.default_cidr
+  v4_cidr_blocks = var.default_cidr2
 }
 
 data "yandex_compute_image" "ubuntu2" {

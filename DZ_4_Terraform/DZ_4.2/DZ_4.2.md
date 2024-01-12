@@ -73,6 +73,105 @@ Error: Error while requesting API to create network: server-request-id = 997146e
 
 ![4.2.3.png](4.2.3.png)
 
+При дальнейших изменениях, ошибок больше не было, часть лога ниже. Оба сервера создались всё равно в одной зоне.
+
+``` 
+  + resources {
+          + core_fraction = 20
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy {
+          + preemptible = true
+        }
+    }
+
+  # yandex_vpc_network.develop will be created
+  + resource "yandex_vpc_network" "develop" {
+      + created_at                = (known after apply)
+      + default_security_group_id = (known after apply)
+      + folder_id                 = (known after apply)
+      + id                        = (known after apply)
+      + labels                    = (known after apply)
+      + name                      = "develop"
+      + subnet_ids                = (known after apply)
+    }
+
+  # yandex_vpc_network.develop2 will be created
+  + resource "yandex_vpc_network" "develop2" {
+      + created_at                = (known after apply)
+      + default_security_group_id = (known after apply)
+      + folder_id                 = (known after apply)
+      + id                        = (known after apply)
+      + labels                    = (known after apply)
+      + name                      = "develop2"
+      + subnet_ids                = (known after apply)
+    }
+
+  # yandex_vpc_subnet.develop will be created
+  + resource "yandex_vpc_subnet" "develop" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "develop"
+      + network_id     = (known after apply)
+      + v4_cidr_blocks = [
+          + "10.0.1.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-a"
+    }
+
+  # yandex_vpc_subnet.develop2 will be created
+  + resource "yandex_vpc_subnet" "develop2" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "develop2"
+      + network_id     = (known after apply)
+      + v4_cidr_blocks = [
+          + "10.0.1.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-b"
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+yandex_vpc_network.develop: Creating...
+yandex_vpc_network.develop2: Creating...
+yandex_vpc_network.develop: Creation complete after 3s [id=enp7jcs0uhht034bbleg]
+yandex_vpc_subnet.develop: Creating...
+yandex_vpc_subnet.develop: Creation complete after 0s [id=e9bj12di5jmnbnjfsicn]
+yandex_compute_instance.platform2: Creating...
+yandex_compute_instance.platform: Creating...
+yandex_vpc_network.develop2: Creation complete after 4s [id=enpu6hragpg3qfl4ssdi]
+yandex_vpc_subnet.develop2: Creating...
+yandex_vpc_subnet.develop2: Creation complete after 1s [id=e2l5f306o273g574t7q2]
+yandex_compute_instance.platform2: Still creating... [10s elapsed]
+yandex_compute_instance.platform: Still creating... [10s elapsed]
+yandex_compute_instance.platform2: Still creating... [20s elapsed]
+yandex_compute_instance.platform: Still creating... [20s elapsed]
+yandex_compute_instance.platform2: Still creating... [30s elapsed]
+yandex_compute_instance.platform: Still creating... [30s elapsed]
+yandex_compute_instance.platform2: Creation complete after 40s [id=fhm40mp3deadks49k48s]
+yandex_compute_instance.platform: Still creating... [40s elapsed]
+yandex_compute_instance.platform: Creation complete after 41s [id=fhmbrsfo343nk0rj0bcs]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+``` 
+
+![4.2.3.1.png](4.2.3.1.png)
+
 ### Задание 4
 
 1. Объявите в файле outputs.tf **один** output , содержащий: instance_name, external_ip, fqdn для каждой из ВМ в удобном лично для вас формате.
