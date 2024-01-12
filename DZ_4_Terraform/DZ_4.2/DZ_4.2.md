@@ -179,6 +179,17 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
+``` 
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.2/src$ terraform output
+instance_name = "netology-develop-platform-web"
+instance_name2 = "netology-develop-platform-db"
+ip_address_platform = "51.250.68.68"
+ip_address_platform2 = "62.84.124.202"
+Внутренний_FQDN2 = "fhm3d9lmumm3okt76sqo.auto.internal"
+Идентификатор_FQDN = "fhm9t91u77kgkcvd9f3u.auto.internal"
+``` 
+
+![4.2.4.png](4.2.4.png)
 
 ### Задание 5
 
