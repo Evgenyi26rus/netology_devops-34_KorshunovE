@@ -48,8 +48,12 @@ variable "vm_web_family" {
 }
 
 variable "vm_web_name" {
-  type = string
-  default = "netology-develop-platform-web"
+  type = object({env=string, project=string, role=string})
+  default = {
+    env     = "develop"
+    project = "platform"
+    role    = "web"
+  }
 }
 
 variable "vm_web_platform_id" {

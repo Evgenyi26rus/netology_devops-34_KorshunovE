@@ -177,6 +177,8 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 1. Объявите в файле outputs.tf **один** output , содержащий: instance_name, external_ip, fqdn для каждой из ВМ в удобном лично для вас формате.
 2. Примените изменения.
 
+[outputs.tf](src%2Foutputs.tf)
+
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
 ``` 
@@ -194,9 +196,35 @@ ip_address_platform2 = "62.84.124.202"
 ### Задание 5
 
 1. В файле locals.tf опишите в **одном** local-блоке имя каждой ВМ, используйте интерполяцию ${..} с НЕСКОЛЬКИМИ переменными по примеру из лекции.
+
+[locals.tf](src%2Flocals.tf)
+
 2. Замените переменные внутри ресурса ВМ на созданные вами local-переменные.
 3. Примените изменения.
 
+Задание так и не получилось выполнить. При замене переменных в файлах [variables.tf](src%2Fvariables.tf) и [vms_platform.tf](src%2Fvms_platform.tf) всё время получал различные ошибки связанные с типом переменных.
+Изначальный вариант, при указании разных типов переменных, в файле variables ошибок не было, а на файл vms_platform выдал ошибку:
+
+![5.2.4.1.png](5.2.4.1.png)
+
+При замене типа везде на map(string), выдал уже другую ошибку:
+
+![5.2.4.2.png](5.2.4.2.png)
+
+Пробовал различные варианты значений типов переменных в строке "type", везде ошибка на main.tf:
+
+``` 
+Error: Incorrect attribute value type
+│ 
+│   on main.tf line 16, in resource "yandex_compute_instance" "platform":
+│   16:   name        = var.vm_web_name
+│     ├────────────────
+│     │ var.vm_web_name is a map of string
+│ 
+│ Inappropriate value for attribute "name": string required.
+``` 
+
+![5.2.4.3.png](5.2.4.3.png)
 
 ### Задание 6
 
