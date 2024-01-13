@@ -41,17 +41,21 @@ variable "vm_db_platform_id" {
   default = "standard-v1"
 }
 
-variable "vm_db_cores" {
-  type = number
-  default = 2
+variable "vms_resources_db" {
+  type = object({
+    vm_db_resources   = map(number)
+     })
+  default = {
+    vm_db_resources = {
+      cores         = 2
+      memory        = 2
+      core_fraction = 20
+    }
+    }
 }
 
-variable "vm_db_memory" {
-  type = number
-  default = 2
-}
-
-variable "vm_db_core_fraction" {
-  type = number
-  default = 20
+variable "vms_ssh_root_key2" {
+  type        = string
+  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
+  description = "ssh-keygen -t ed25519"
 }

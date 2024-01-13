@@ -229,7 +229,8 @@ Error: Incorrect attribute value type
 ### Задание 6
 
 1. Вместо использования трёх переменных  ".._cores",".._memory",".._core_fraction" в блоке  resources {...}, объедините их в единую map-переменную **vms_resources** и  внутри неё конфиги обеих ВМ в виде вложенного map.  
-   ```
+  
+```
    пример из terraform.tfvars:
    vms_resources = {
      web={
@@ -246,7 +247,7 @@ Error: Incorrect attribute value type
      }
    }
    ```
-3. Создайте и используйте отдельную map переменную для блока metadata, она должна быть общая для всех ваших ВМ.
+2. Создайте и используйте отдельную map переменную для блока metadata, она должна быть общая для всех ваших ВМ.
    ```
    пример из terraform.tfvars:
    metadata = {
@@ -254,9 +255,19 @@ Error: Incorrect attribute value type
      ssh-keys           = "ubuntu:ssh-ed25519 AAAAC..."
    }
    ```  
-  
-5. Найдите и закоментируйте все, более не используемые переменные проекта.
-6. Проверьте terraform plan. Изменений быть не должно.
+
+3. Найдите и закоментируйте все, более не используемые переменные проекта.
+
+[main.tf](src%2Fmain.tf)
+ 
+[variables.tf](src%2Fvariables.tf)
+
+[vms_platform.tf](src%2Fvms_platform.tf)
+
+4. Проверьте terraform plan. Изменений быть не должно.
+
+
+
 
 ------
 

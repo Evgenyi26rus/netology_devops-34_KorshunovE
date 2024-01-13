@@ -66,17 +66,15 @@ variable "vm_web_platform_id" {
   default = "standard-v1"
 }
 
-variable "vm_web_cores" {
-  type = number
-  default = 2
-}
-
-variable "vm_web_memory" {
-  type = number
-  default = 1
-}
-
-variable "vm_web_core_fraction" {
-  type = number
-  default = 5
+variable "vms_resources" {
+  type = object({
+    vm_web_resources   = map(number)
+     })
+  default = {
+    vm_web_resources = {
+      cores         = 2
+      memory        = 1
+      core_fraction = 5
+    }
+    }
 }
