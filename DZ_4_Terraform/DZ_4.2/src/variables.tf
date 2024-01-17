@@ -47,19 +47,19 @@ variable "vm_web_family" {
   default = "ubuntu-2004-lts"
 }
 
-variable "vm_web_name" {
-  type = string
-  default = "netology-develop-platform-web"
-}
-
 #variable "vm_web_name" {
-#  type = object({env=string, project=string, role=string})
-#  default = {
-#    env     = "develop"
-#    project = "platform"
-#    role    = "web"
-#  }
+#  type = string
+#  default = "netology-develop-platform-web"
 #}
+
+variable "vm_web_name" {
+  type = map(string)
+  default = {
+    env     = "develop"
+    project = "platform"
+    role    = "web"
+  }
+}
 
 variable "vm_web_platform_id" {
   type = string
