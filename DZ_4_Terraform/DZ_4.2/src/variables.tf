@@ -78,3 +78,12 @@ variable "vms_resources" {
     }
     }
 }
+
+variable "test" {
+  type        = object({dev1=list(string); dev2=list(string); prod1=list(string)})
+#  default = {
+#    dev1 = test.dev1
+#    dev2 = test.dev2
+#    prod1 = test.prod1
+#    }
+}

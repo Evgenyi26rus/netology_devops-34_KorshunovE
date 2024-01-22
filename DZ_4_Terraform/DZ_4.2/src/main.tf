@@ -82,3 +82,4 @@ resource "yandex_compute_instance" "platform2" {
   }
 
 }
+
