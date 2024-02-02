@@ -52,14 +52,14 @@ variable "vm_web_family" {
 #  default = "netology-develop-platform-web"
 #}
 
-variable "vm_web_name" {
-  type = map(string)
-  default = {
-    env     = "develop"
-    project = "platform"
-    role    = "web"
-  }
-}
+#variable "vm_web_name" {
+#  type = object({env = string, project = string, role = string})
+#  default = {
+#    env     = "develop"
+#    project = "platform"
+#    role    = "web"
+#  }
+#}
 
 variable "vm_web_platform_id" {
   type = string
@@ -79,11 +79,11 @@ variable "vms_resources" {
     }
 }
 
-variable "test" {
-  type        = object({dev1=list(string); dev2=list(string); prod1=list(string)})
+#variable "test" {
+#  type        = object({dev1=list(string), dev2=list(string), prod1=list(string)})
 #  default = {
 #    dev1 = test.dev1
 #    dev2 = test.dev2
 #    prod1 = test.prod1
 #    }
-}
+#}

@@ -27,14 +27,14 @@ variable "vm_db_family" {
 #  default = "netology-develop-platform-db"
 #}
 
-variable "vm_db_name" {
-  type = map(string)
-  default = {
-    env     = "develop"
-    project = "platform"
-    role    = "db"
-  }
-}
+#variable "vm_db_name" {
+#  type = object({env = string, project = string, role = string})
+#  default = {
+#    env     = "develop"
+#    project = "platform"
+#    role    = "db"
+#  }
+#}
 
 variable "vm_db_platform_id" {
   type = string
