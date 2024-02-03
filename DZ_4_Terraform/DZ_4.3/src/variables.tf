@@ -28,5 +28,32 @@ variable "default_cidr" {
 variable "vpc_name" {
   type        = string
   default     = "develop"
-  description = "VPC network&subnet name"
+  description = "VPC network & subnet name"
+}
+
+variable "each_vm" {
+  type = list(object({
+    vm_name = string
+    platform_id = string
+    cpu = number
+    ram = number
+    core_fraction = number
+    disk= number
+  }))
+  default = [
+    { vm_name = "main"
+      platform_id = "standard-v1"
+      cpu = 2
+      ram = 1
+      core_fraction = 5
+      disk = 13
+    },
+    {  vm_name = "replica"
+      platform_id = "standard-v1"
+      cpu = 4
+      ram = 2
+      core_fraction = 5
+      disk = 20
+      }
+  ]
 }
