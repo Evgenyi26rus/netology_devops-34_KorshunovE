@@ -57,3 +57,35 @@ variable "each_vm" {
       }
   ]
 }
+
+variable "count_vm" {
+  type = object({
+    platform_id = string
+    cpu = number
+    ram = number
+    core_fraction = number
+  })
+  default = ({
+        platform_id   = "standard-v1"
+        cpu           = 2
+        ram           = 1
+        core_fraction = 5
+    })
+}
+
+variable "disk_vm" {
+  type = object({
+    vm_name = string
+    platform_id = string
+    cpu = number
+    ram = number
+    core_fraction = number
+  })
+  default = ({
+    vm_name = "storage"
+    platform_id   = "standard-v1"
+    cpu           = 2
+    ram           = 1
+    core_fraction = 5
+    })
+}

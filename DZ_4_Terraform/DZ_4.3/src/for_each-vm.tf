@@ -1,7 +1,3 @@
-data "yandex_compute_image" "ubuntu2" {
-  family = "ubuntu-2004-lts"
-}
-
 resource "yandex_compute_instance" "for_each" {
   for_each = { for key, value in var.each_vm : key => value }
   name        = "${each.value.vm_name}"

@@ -4,17 +4,13 @@ resource "yandex_compute_disk" "disk_vm" {
   count = 3
 }
 
-data "yandex_compute_image" "ubuntu3" {
-  family = "ubuntu-2004-lts"
-}
-
 resource "yandex_compute_instance" "storage_vm" {
-  name        = "storage"
-  platform_id = "standard-v1"
+  name        = "${var.disk_vm.vm_name}"
+  platform_id = "${var.disk_vm.platform_id}"
   resources {
-    cores         = 2
-    memory        = 1
-    core_fraction = 5
+    cores         = "${var.disk_vm.cpu}"
+    memory        = "${var.disk_vm.ram}"
+    core_fraction = "${var.disk_vm.core_fraction}"
   }
 
   boot_disk {

@@ -6,12 +6,12 @@ resource "yandex_compute_instance" "platform" {
   depends_on = [yandex_compute_instance.for_each]
   count = 2
   name        = "web-${count.index+1}"
-  platform_id = "standard-v1"
+  platform_id = "${var.count_vm.platform_id}"
   resources {
-    cores         = 2
-    memory        = 1
-    core_fraction = 5
-  }
+    cores         = "${var.count_vm.cpu}"
+    memory        = "${var.count_vm.ram}"
+    core_fraction = "${var.count_vm.core_fraction}"
+      }
 
   boot_disk {
     initialize_params {
