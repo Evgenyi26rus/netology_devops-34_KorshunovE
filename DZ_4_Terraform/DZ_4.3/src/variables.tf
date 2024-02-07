@@ -75,6 +75,8 @@ variable "count_vm" {
 
 variable "disk_vm" {
   type = object({
+    disk_size = number
+    disk_count = number
     vm_name = string
     platform_id = string
     cpu = number
@@ -82,6 +84,8 @@ variable "disk_vm" {
     core_fraction = number
   })
   default = ({
+    disk_size = 1
+    disk_count = 3
     vm_name = "storage"
     platform_id   = "standard-v1"
     cpu           = 2
