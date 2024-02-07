@@ -4,7 +4,6 @@ resource "local_file" "ansible_inventory" {
     webservers = yandex_compute_instance.platform,
     databases = yandex_compute_instance.for_each,
     storage = yandex_compute_instance.storage_vm,
-    %{~ for i in storage ~}
 
   })
 }
