@@ -33,9 +33,9 @@ variable "vpc_name" {
 
 ###common vars
 
-variable "vms_ssh_root_key" {
+variable "ssh-authorized-keys" {
   type        = string
-  default     = "your_ssh_ed25519_key"
+  default     = "~/.ssh/1.pub"
   description = "ssh-keygen -t ed25519"
 }
 
