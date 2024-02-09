@@ -103,10 +103,134 @@ module "vpc_dev" {
 
 ### Задание 3
 1. Выведите список ресурсов в стейте.
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform state list
+2024-02-09T21:52:15.328+0300 [INFO]  Terraform version: 1.5.7
+2024-02-09T21:52:15.328+0300 [DEBUG] using github.com/hashicorp/go-tfe v1.26.0
+2024-02-09T21:52:15.328+0300 [DEBUG] using github.com/hashicorp/hcl/v2 v2.16.2
+...
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2024-02-09T21:52:15.564+0300 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2024-02-09T21:52:15.564+0300 [TRACE] statemgr.Filesystem: read snapshot with lineage "8ae382c9-02c1-6a4c-4200-0d737fdb4a5b" serial 227
+data.template_file.cloudinit
+module.vpc_dev.data.yandex_compute_image.my_image
+module.vpc_dev.yandex_compute_instance.vm[0]
+module.vpc_dev.yandex_vpc_network.develop
+module.vpc_dev.yandex_vpc_subnet.develop
+
+```
+
 2. Полностью удалите из стейта модуль vpc.
 3. Полностью удалите из стейта модуль vm.
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform state rm module.vpc_dev
+2024-02-09T21:56:15.987+0300 [INFO]  Terraform version: 1.5.7
+2024-02-09T21:56:15.991+0300 [DEBUG] using github.com/hashicorp/go-tfe v1.26.0
+2024-02-09T21:56:15.991+0300 [DEBUG] using github.com/hashicorp/hcl/v2 v2.16.2
+...
+2024-02-09T21:56:16.512+0300 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2024-02-09T21:56:16.512+0300 [TRACE] statemgr.Filesystem: read snapshot with lineage "8ae382c9-02c1-6a4c-4200-0d737fdb4a5b" serial 227
+Removed module.vpc_dev.data.yandex_compute_image.my_image
+Removed module.vpc_dev.yandex_compute_instance.vm[0]
+Removed module.vpc_dev.yandex_vpc_network.develop
+Removed module.vpc_dev.yandex_vpc_subnet.develop
+2024-02-09T21:56:16.513+0300 [TRACE] states.SyncState: pruning module.vpc_dev because it is empty
+```
+
 4. Импортируйте всё обратно. Проверьте terraform plan. Изменений быть не должно.
 Приложите список выполненных команд и скриншоты процессы.
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform import 'module.vpc_dev.yandex_compute_instance.vm[0]' fhmjvcmhcgqm68hgnr4o
+...
+2024-02-09T22:07:25.583+0300 [TRACE] statemgr.Filesystem: creating backup snapshot at terraform.tfstate.backup
+2024-02-09T22:07:25.583+0300 [TRACE] statemgr.Filesystem: state has changed since last snapshot, so incrementing serial to 233
+2024-02-09T22:07:25.583+0300 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
+2024-02-09T22:07:25.586+0300 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2024-02-09T22:07:25.586+0300 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+
+
+```
+
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform import 'module.vpc_dev.yandex_vpc_network.develop' enp1jflacbpu0be79bnh
+...
+2024-02-09T22:07:53.350+0300 [TRACE] graphNodeImportState: import module.vpc_dev.yandex_vpc_network.develop "enp1jflacbpu0be79bnh" produced instance object of type yandex_vpc_network
+2024-02-09T22:07:53.350+0300 [TRACE] provider.terraform-provider-yandex_v0.107.0: Received request: tf_proto_version=6.3 tf_provider_addr=yandex-cloud/yandex tf_rpc=ValidateDataResourceConfig tf_req_id=53774d88-c64e-db95-35af-f8767c159af5 @caller=github.com/hashicorp/terraform-plugin-go@v0.18.0/tfprotov6/tf6server/server.go:620 @module=sdk.proto tf_data_source_type=yandex_compute_image timestamp=2024-02-09T22:07:53.350+0300
+module.vpc_dev.yandex_vpc_network.develop: Import prepared!
+  Prepared yandex_vpc_network for import
+2024-02-09T22:07:53.350+0300 [TRACE] provider.terraform-provider-yandex_v0.107.0: Sending request downstream: tf_data_source_type=yandex_compute_image tf_provider_addr=yandex-cloud/yandex tf_rpc=ValidateDataResourceConfig @caller=github.com/hashicorp/terraform-plugin-go@v0.18.0/tfprotov6/internal/tf6serverlogging/downstream_request.go:20 @module=sdk.proto tf_proto_version=6.3 tf_req_id=53774d88-c64e-db95-35af-f8767c159af5 timestamp=2024-02-09T22:07:53.350+0300
+....
+024-02-09T22:07:53.625+0300 [TRACE] statemgr.Filesystem: state has changed since last snapshot, so incrementing serial to 234
+2024-02-09T22:07:53.625+0300 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
+2024-02-09T22:07:53.628+0300 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2024-02-09T22:07:53.628+0300 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+
+```
+
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform import 'module.vpc_dev.yandex_vpc_subnet.develop' e9bu6uc766e33hcaaarm
+...
+2024-02-09T22:09:49.314+0300 [TRACE] provider.terraform-provider-yandex_v0.107.0: Served request: tf_resource_type=yandex_vpc_subnet tf_rpc=ImportResourceState tf_proto_version=6.3 @module=sdk.proto tf_provider_addr=yandex-cloud/yandex tf_req_id=169246c5-080f-e5ed-be34-fc0ee45c33db @caller=github.com/hashicorp/terraform-plugin-go@v0.18.0/tfprotov6/tf6server/server.go:864 timestamp=2024-02-09T22:09:49.314+0300
+2024-02-09T22:09:49.314+0300 [TRACE] graphNodeImportState: import module.vpc_dev.yandex_vpc_subnet.develop "e9bu6uc766e33hcaaarm" produced instance object of type yandex_vpc_subnet
+module.vpc_dev.yandex_vpc_subnet.develop: Import prepared!
+  Prepared yandex_vpc_subnet for import
+2024-02-09T22:09:49.314+0300 [TRACE] vertex "module.vpc_dev.yandex_vpc_subnet.develop (import id \"e9bu6uc766e33hcaaarm\")": expanding dynamic subgraph
+2024-02-09T22:09:49.314+0300 [TRACE] vertex "module.vpc_dev.yandex_vpc_subnet.develop (import id \"e9bu6uc766e33hcaaarm\")": entering dynamic subgraph
+
+...
+2024-02-09T22:09:49.559+0300 [TRACE] statemgr.Filesystem: state has changed since last snapshot, so incrementing serial to 235
+2024-02-09T22:09:49.559+0300 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
+2024-02-09T22:09:49.562+0300 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2024-02-09T22:09:49.562+0300 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+
+```
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_4_Terraform/DZ_4.4/src$ terraform state list
+2024-02-09T22:10:55.021+0300 [INFO]  Terraform version: 1.5.7
+2024-02-09T22:10:55.021+0300 [DEBUG] using github.com/hashicorp/go-tfe v1.26.0
+2024-02-09T22:10:55.021+0300 [DEBUG] using github.com/hashicorp/hcl/v2 v2.16.2
+...
+2024-02-09T22:10:55.263+0300 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2024-02-09T22:10:55.263+0300 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2024-02-09T22:10:55.263+0300 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2024-02-09T22:10:55.263+0300 [TRACE] statemgr.Filesystem: read snapshot with lineage "8ae382c9-02c1-6a4c-4200-0d737fdb4a5b" serial 235
+data.template_file.cloudinit
+module.vpc_dev.data.yandex_compute_image.my_image
+module.vpc_dev.yandex_compute_instance.vm[0]
+module.vpc_dev.yandex_vpc_network.develop
+module.vpc_dev.yandex_vpc_subnet.develop
+
+```
+
+![4.4.3.png](picture%2F4.4.3.png)
 
 ## Дополнительные задания (со звёздочкой*)
 
