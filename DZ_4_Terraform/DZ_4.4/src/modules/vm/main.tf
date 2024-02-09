@@ -10,11 +10,24 @@ terraform {
 locals {
   labels = length(keys(var.labels)) >0 ? var.labels: {
     "env"=var.env_name
-    "project"="marketing"
+
   }
 }
 
 #!
+
+#создаем облачную сеть
+resource "yandex_vpc_network" "develop" {
+  name = var.env_name
+}
+
+#создаем подсеть
+resource "yandex_vpc_subnet" "develop" {
+  name           = var.env_name
+  zone           = var.subnet_zones
+  network_id     = yandex_vpc_network.develop.id
+  v4_cidr_blocks = var.subnet_id
+}
 
 
 data "yandex_compute_image" "my_image" {
@@ -24,16 +37,16 @@ data "yandex_compute_image" "my_image" {
 resource "yandex_compute_instance" "vm" {
   count = var.instance_count
 
-  name               = var.env_name == null ? "${var.instance_name}-${count.index}" : "${var.env_name}-${var.instance_name}-${count.index}"
+  name               = var.env_name
   platform_id        = var.platform
-  hostname           = var.env_name == null ? "${var.instance_name}-${count.index}" : "${var.env_name}-${var.instance_name}-${count.index}"
-  zone               = element(var.subnet_zones, count.index)
+  hostname           = "${var.instance_name}-${count.index}"
+  zone               = var.subnet_zones
   service_account_id = var.service_account_id
   description        = "${var.description} {{terraform managed}}"
   scheduling_policy {
     preemptible = var.preemptible
   }
-  
+
   resources {
     cores         = var.instance_cores
     memory        = var.instance_memory
@@ -48,17 +61,23 @@ resource "yandex_compute_instance" "vm" {
     }
   }
 
-  network_interface {
-    subnet_id  = element(var.subnet_ids, count.index)
-    nat        = var.public_ip
-    ip_address = var.known_internal_ip
+ network_interface {
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = var.public_ip
     security_group_ids = var.security_group_ids
-  }
+ }
+
+#network_interface {
+#    subnet_id  = var.subnet_id
+#    nat        = var.public_ip
+#    ip_address = var.known_internal_ip
+#    security_group_ids = var.security_group_ids
+#  }
 
   metadata = {
     for k, v in var.metadata : k => v
   }
-  
+
   labels = {
     for k, v in local.labels : k => v
   }

@@ -1,3 +1,16 @@
+#output "yandex_vpc_subnet" {
+#  value = yandex_vpc_subnet.develop
+#}
+
+
+output "network_id" {
+        value = yandex_vpc_subnet.develop.id
+}
+
+output "subnet_id" {
+        value = yandex_vpc_subnet.develop.id
+}
+
 output "external_ip_address" {
   value = yandex_compute_instance.vm.*.network_interface.0.nat_ip_address
 }

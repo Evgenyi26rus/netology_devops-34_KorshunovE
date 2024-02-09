@@ -1,18 +1,21 @@
 variable "env_name" {
   type    = string
-  default = null
+  default = ""
 }
 
 variable "network_id" {
   type = string
+  default = ""
 }
 
 variable "subnet_zones" {
-  type = list(string)
+  type = string
+  default = "ru-central1-a"
 }
 
-variable "subnet_ids" {
-  type = list(string)
+variable "subnet_id" {
+  #type = list(string)
+  default = ["10.0.1.0/24"]
 }
 
 variable "instance_name" {
@@ -87,6 +90,7 @@ variable "preemptible" {
 variable "metadata" {
   description = "for dynamic block 'metadata' "
   type        = map(string)
+  default = {}
 }
 
 variable "security_group_ids" {
