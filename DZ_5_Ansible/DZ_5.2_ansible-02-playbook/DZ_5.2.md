@@ -7,7 +7,7 @@
 3. Скачайте [Playbook](./playbook/) из репозитория с домашним заданием и перенесите его в свой репозиторий.
 4. Подготовьте хосты в соответствии с группами из предподготовленного playbook.
 
-![5.2.0.4.png](playbook%2Fpicture%2F5.2.0.4.png)
+![5.2.0.4.png](picture%2F5.2.0.4.png)
 
 ## Основная часть
 
@@ -50,7 +50,7 @@
 
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 
-![5.2.5.png](playbook%2Fpicture%2F5.2.5.png)
+![5.2.5.png](picture%2F5.2.5.png)
 
 ```
 Couldn't parse task at site.yml:33 (this task 'ansible.builtin.command' has extra params, which is only allowed in the following modules: import_role, win_command, meta, add_host, script, raw, include_role, import_tasks, group_by, set_fact, include_vars, include_tasks, command, shell, include, win_shell
