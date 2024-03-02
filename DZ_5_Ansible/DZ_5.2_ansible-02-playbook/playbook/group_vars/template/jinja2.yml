@@ -1,0 +1,17 @@
+---
+vector_config:
+  sources:
+    sample_file:
+      type: file
+      read_from: beginning
+      ignore_older_secs: 600
+      include:
+        - /var/log/**/*.log
+
+  sinks:
+    to_clickhouse:
+      type: clickhouse
+      inputs:
+        - my-source-or-transform-id
+      endpoint: http://localhost:8123
+      table: mytable

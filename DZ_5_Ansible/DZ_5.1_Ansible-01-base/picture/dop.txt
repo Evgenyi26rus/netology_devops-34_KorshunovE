@@ -1,0 +1,16 @@
+ansible-playbook -i inventory/test.yml site.yml
+
+ansible-inventory -i inventory/test.yml --graph
+ansible-inventory -i inventory/prod.yml --graph
+
+ansible-inventory -i inventory/prod.yml --list
+
+sudo ansible-vault encrypt group_vars/deb/examp.yml - блокирует и файл и содержание в нём (при команде с судо)
+ansible-vault encrypt group_vars/el/examp.yml
+
+ansible-vault decrypt group_vars/el/examp.yml
+sudo ansible-vault decrypt group_vars/deb/examp.yml
+
+sudo ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+
+ansible-doc -t connection -l

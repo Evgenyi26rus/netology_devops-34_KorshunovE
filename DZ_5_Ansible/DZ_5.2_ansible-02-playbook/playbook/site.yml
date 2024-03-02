@@ -1,6 +1,7 @@
 ---
 - name: Install Clickhouse
   hosts: clickhouse
+  tags: clickhouse
   handlers:
     - name: Start clickhouse service
       become: true
@@ -34,3 +35,43 @@
       register: create_db
       failed_when: create_db.rc != 0 and create_db.rc !=82
       changed_when: create_db.rc == 0
+
+- name: Install Vector
+  hosts: Vector
+  tags: Vector
+  handlers:
+    - name: Start Vector service
+      become: true
+      ansible.builtin.service:
+        name: Vector-server
+        state: restarted
+  tasks:
+    - block:
+        - name: Get Vector distrib
+          ansible.builtin.get_url:
+            url: "https://packages.timber.io/vector/0.30.0/vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz"
+            dest: "./vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz"
+            mode: "0755"
+        - name: Create Vector directory
+          become: true
+          ansible.builtin.file:
+            path: /etc/vector
+        - name: Unarchive Vector package
+          become: true
+          ansible.builtin.unarchive:
+            src: /tmp/vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz
+            dest: /etc/vector
+            remote_src: true
+#        - name: Install vector
+#          ansible.builtin.yum:
+#            name:
+#              - vector-0.30.0-1.{{ vector_arch }}
+        - name: Configure vector
+          ansible.builtin.template:
+            src: "./template/jinja2.yml"
+            dest: "/etc/vector/vector.toml"
+            mode: "0755"
+
+        - name: Flush handlers
+          meta: flush_handlers
+
