@@ -33,7 +33,6 @@ sudo docker system prune -a -f
 
 ignore_errors: true
 
-
 docker run -it -d --name clickhouse-01 --ulimit nofile=262144:262144 centos:7
 docker run -dit --name clickhouse-01 pycontribs/centos:7 sleep 6000000
 
