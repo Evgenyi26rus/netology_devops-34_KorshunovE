@@ -1,0 +1,46 @@
+
+ansible-playbook -i inventory/test.yml site.yml 
+
+ansible-inventory -i inventory/test.yml --graph 
+ansible-inventory -i inventory/prod.yml --graph
+
+ansible-inventory -i inventory/prod.yml --list
+
+sudo ansible-vault encrypt group_vars/deb/examp.yml - блокирует и файл и содержание в нём (при команде с судо)
+ansible-vault encrypt group_vars/el/examp.yml
+
+ansible-vault decrypt group_vars/el/examp.yml
+sudo ansible-vault decrypt group_vars/deb/examp.yml
+
+sudo ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+
+ansible-doc -t connection -l
+
+======================
+
+/home/korshunovi/PycharmProjects/netology_devops-34_KorshunovE/DZ_5_Ansible/DZ_5.2_ansible-02-playbook/playbook
+
+
+ansible-playbook -i inventory/prod.yml site.yml --check
+
+sudo docker run -dit --name clickhouse-01 centos:7
+sudo docker run -it centos bash
+
+sudo docker ps
+sudo docker image ls
+sudo docker system prune -a -f
+
+
+ignore_errors: true
+
+
+docker run -it -d --name clickhouse-01 --ulimit nofile=262144:262144 centos:7
+docker run -dit --name clickhouse-01 pycontribs/centos:7 sleep 6000000
+
+
+systemctl status clickhouse-server	- проверить, что установлен
+clickhouse-client		 	- приконектится к клиенту
+create table tab1 (id int, name String) engine=Log; - создать табличку tab1 с движком Log
+insert into tab1 values (0, 'Evgenyi');	      - вписать строку в эту табличку
+
+

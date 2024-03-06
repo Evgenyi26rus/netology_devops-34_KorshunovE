@@ -26,26 +26,44 @@
 4. Tasks должны: скачать дистрибутив нужной версии, выполнить распаковку в выбранную директорию, установить vector.
 
 ```
-        - name: Get Vector distrib
-          ansible.builtin.get_url:
-            url: "https://packages.timber.io/vector/0.30.0/vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz"
-            dest: "./vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz"
-            mode: "0755"
-        - name: Create Vector directory
-          become: true
-          ansible.builtin.file:
-            path: /etc/vector
-        - name: Unarchive Vector package
-          become: true
-          ansible.builtin.unarchive:
-            src: /tmp/vector-0.30.0-1.{{ vector_arch }}-unknown-linux-gnu.tar.gz
-            dest: /etc/vector
-            remote_src: true
-        - name: Configure vector
-          ansible.builtin.template:
-            src: "./template/jinja2.yml"
-            dest: "/etc/vector/vector.toml"
-            mode: "0755"
+   tasks:
+    - block:
+      - name: Create vector directory
+        ansible.builtin.file:
+          path: "{{ vector_workdir }}"
+          state: directory
+      - name: Create vector config directory
+        ansible.builtin.file:
+            path: "{{ vector_config }}"
+            state: directory
+      - name: Get Vector distrib
+        ansible.builtin.get_url:
+          url: "https://packages.timber.io/vector/0.30.0/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+          dest: "{{ vector_workdir }}/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+      - name: Unzip Vector archive
+        ansible.builtin.unarchive:
+          remote_src: true
+          src: "{{ vector_workdir }}/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+          dest: "{{ vector_workdir }}"
+      - name: Install Vector binary
+        become: true
+        ansible.builtin.copy:
+          remote_src: true
+          src: "{{ vector_workdir }}/vector-x86_64-unknown-linux-gnu/bin/vector"
+          dest: "/usr/bin/"
+          mode: 0777
+          owner: root
+          group: root
+      - name: Check Vector installation
+        ansible.builtin.command: "vector --version"
+        register: var_vector
+        failed_when: var_vector.rc != 0
+        changed_when: var_vector.rc == 0
+      - name: Configure vector
+        ansible.builtin.template:
+          src: "./group_vars/template/jinja2.yml"
+          dest: "{{ vector_config }}/jinja2.yml"
+          mode: 0777       
 ```
 
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
@@ -67,17 +85,83 @@ be elsewhere in the file depending on the exact syntax problem.
   'skipped_rules': []}
 
 ```
+Решение этой ошибки так и не нашёл. Но далее в процессе она ни на что не повлияла.
+
+Помимо неё в процессе было выявлено множество ошибок, в течении некоторого времени, решение нашлось.
 
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+
+![5.2.6.png](picture%2F5.2.6.png)
+
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+
+![5.2.7.1.png](picture%2F5.2.7.1.png)
+
+![5.2.7.2.png](picture%2F5.2.7.2.png)
+
+![5.2.7.3.png](picture%2F5.2.7.3.png)
+
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+
+```
+korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_5_Ansible/DZ_5.2_ansible-02-playbook/playbook$ ansible-playbook -i inventory/prod.yml site.yml --diff
+
+PLAY [Install Clickhouse] *************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Get clickhouse distrib] *********************************************************************************************************************************************************************************************
+ok: [clickhouse-01] => (item=clickhouse-client)
+ok: [clickhouse-01] => (item=clickhouse-server)
+failed: [clickhouse-01] (item=clickhouse-common-static) => {"ansible_loop_var": "item", "changed": false, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "elapsed": 0, "gid": 1000, "group": "centos", "item": "clickhouse-common-static", "mode": "0664", "msg": "Request failed", "owner": "centos", "response": "HTTP Error 404: Not Found", "secontext": "unconfined_u:object_r:user_home_t:s0", "size": 246310036, "state": "file", "status_code": 404, "uid": 1000, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm"}
+
+TASK [Get clickhouse distrib] *********************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Install clickhouse packages] ****************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Flush handlers] *****************************************************************************************************************************************************************************************************
+
+TASK [Create database] ****************************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+PLAY [Install Vector] *****************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Create vector directory] ********************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Create vector config directory] *************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Get Vector distrib] *************************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Unzip Vector archive] ***********************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Install Vector binary] **********************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Check Vector installation] ******************************************************************************************************************************************************************************************
+changed: [clickhouse-01]
+
+TASK [Configure vector] ***************************************************************************************************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [Flush handlers] *****************************************************************************************************************************************************************************************************
+
+PLAY RECAP ****************************************************************************************************************************************************************************************************************
+clickhouse-01              : ok=12   changed=1    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0 
+```
+
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook). Так же приложите скриншоты выполнения заданий №5-8
+
+[Документация ansible playbook.md](%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F%20ansible%20playbook.md)
+
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
----
-
-### Как оформить решение задания
-
-Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
-
----

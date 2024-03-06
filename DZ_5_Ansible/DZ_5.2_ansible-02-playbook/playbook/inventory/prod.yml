@@ -2,8 +2,13 @@
 clickhouse:
   hosts:
     clickhouse-01:
-      ansible_host: docker
+      ansible_host: 178.154.203.103
+      ansible_user: centos
+      ansible_ssh_private_key_file: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
+
 vector:
   hosts:
     clickhouse-01:
-      ansible_connection: docker
+      ansible_host: 178.154.203.103
+      ansible_user: centos
+      ansible_ssh_private_key_file: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
