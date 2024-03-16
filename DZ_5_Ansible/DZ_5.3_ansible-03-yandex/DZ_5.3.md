@@ -41,6 +41,7 @@
 
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
+![5.3.png](picture%2F5.3.png)
 
 ```commandline
 korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_5_Ansible/DZ_5.3_ansible-03-yandex/playbook$ ansible-lint site.yml
