@@ -42,4 +42,6 @@ clickhouse-client		 	- приконектится к клиенту
 create table tab1 (id int, name String) engine=Log; - создать табличку tab1 с движком Log
 insert into tab1 values (0, 'Evgenyi');	      - вписать строку в эту табличку
 
-
+git tag -a 08-ansible-02-playbook b6a2c50
+git tag
+git push --tags

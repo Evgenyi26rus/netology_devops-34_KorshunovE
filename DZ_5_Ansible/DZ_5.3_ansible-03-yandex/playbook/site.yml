@@ -1,0 +1,91 @@
+---
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+  tasks:
+    - block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+          with_items: "{{ clickhouse_packages }}"
+      rescue:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+    - name: Install clickhouse packages
+      become: true
+      ansible.builtin.yum:
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+      notify: Start clickhouse service
+    - name: Flush handlers
+      meta: flush_handlers
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc !=82
+      changed_when: create_db.rc == 0
+      ignore_errors: true
+
+  tags: clickhouse
+
+
+- name: Install Vector
+  hosts: clickhouse
+  handlers:
+    - name: Start Vector service
+      become: true
+      ansible.builtin.service:
+        name: Vector.service
+        state: restarted
+  tasks:
+    - block:
+      - name: Create vector directory
+        ansible.builtin.file:
+          path: "{{ vector_workdir }}"
+          state: directory
+      - name: Create vector config directory
+        ansible.builtin.file:
+            path: "{{ vector_config }}"
+            state: directory
+      - name: Get Vector distrib
+        ansible.builtin.get_url:
+          url: "https://packages.timber.io/vector/0.30.0/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+          dest: "{{ vector_workdir }}/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+      - name: Unzip Vector archive
+        ansible.builtin.unarchive:
+          remote_src: true
+          src: "{{ vector_workdir }}/vector-0.30.0-x86_64-unknown-linux-gnu.tar.gz"
+          dest: "{{ vector_workdir }}"
+      - name: Install Vector binary
+        become: true
+        ansible.builtin.copy:
+          remote_src: true
+          src: "{{ vector_workdir }}/vector-x86_64-unknown-linux-gnu/bin/vector"
+          dest: "/usr/bin/"
+          mode: 0777
+          owner: root
+          group: root
+      - name: Check Vector installation
+        ansible.builtin.command: "vector --version"
+        register: var_vector
+        failed_when: var_vector.rc != 0
+        changed_when: var_vector.rc == 0
+      - name: Configure vector
+        ansible.builtin.template:
+          src: "./group_vars/template/jinja2.yml"
+          dest: "{{ vector_config }}/jinja2.yml"
+          mode: 0777
+      - name: Flush handlers
+        meta: flush_handlers
+
+  tags: Vector
