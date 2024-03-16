@@ -1,14 +1,21 @@
 ---
 clickhouse:
   hosts:
-    clickhouse-01:
-      ansible_host: 178.154.203.103
+    clickhouse:
+      ansible_host: 51.250.9.132
       ansible_user: centos
       ansible_ssh_private_key_file: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
 
 vector:
   hosts:
-    clickhouse-01:
-      ansible_host: 178.154.203.103
+    vector:
+      ansible_host: 158.160.108.58
+      ansible_user: centos
+      ansible_ssh_private_key_file: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
+
+lighthouse:
+  hosts:
+    lighthouse:
+      ansible_host: 158.160.115.217
       ansible_user: centos
       ansible_ssh_private_key_file: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
