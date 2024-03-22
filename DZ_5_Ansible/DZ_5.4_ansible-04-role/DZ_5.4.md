@@ -33,18 +33,14 @@
 
 [clickhouse](playbook%2Froles%2Fclickhouse)
 
-[LightHouse](playbook%2Froles%2FLightHouse)
-
-[Vector](playbook%2Froles%2FVector)
-
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
 
 #### tasks
 Clickhouse: [main.yml](playbook%2Froles%2Fclickhouse%2Ftasks%2Fmain.yml)
 
-LightHouse: [main.yml](playbook%2Froles%2FLightHouse%2Ftasks%2Fmain.yml)
+LightHouse: https://github.com/Evgenyi26rus/LightHouse/blob/master/tasks/main.yml
 
-Vector: [main.yml](playbook%2Froles%2FVector%2Ftasks%2Fmain.yml)
+Vector: https://github.com/Evgenyi26rus/vector-role/blob/master/tasks/main.yml
 
 #### переменные
 Clickhouse:
@@ -55,34 +51,33 @@ Clickhouse:
 
 LightHouse: 
 
-[main.yml](playbook%2Froles%2FLightHouse%2Fvars%2Fmain.yml)
+https://github.com/Evgenyi26rus/LightHouse/blob/master/vars/main.yml
 
 Vector: 
 
-[main.yml](playbook%2Froles%2FVector%2Fdefaults%2Fmain.yml)
-
-[main.yml](playbook%2Froles%2FVector%2Fvars%2Fmain.yml)
+https://github.com/Evgenyi26rus/vector-role/blob/master/defaults/main.yml
+https://github.com/Evgenyi26rus/vector-role/blob/master/vars/main.yml
 
 5. Перенести нужные шаблоны конфигов в `templates`.
 
 LightHouse: 
 
-[lighthouse.yml.j2](playbook%2Froles%2FLightHouse%2Ftemplates%2Flighthouse.yml.j2)
+https://github.com/Evgenyi26rus/LightHouse/blob/master/templates/lighthouse.yml.j2
 
-[nginx.yml.j2](playbook%2Froles%2FLightHouse%2Ftemplates%2Fnginx.yml.j2)
+https://github.com/Evgenyi26rus/LightHouse/blob/master/templates/nginx.yml.j2
 
 Vector: 
 
-[vector.yml.j2](playbook%2Froles%2FVector%2Ftemplates%2Fvector.yml.j2)
+https://github.com/Evgenyi26rus/vector-role/blob/master/templates/vector.yml.j2
 
 
 6. Опишите в `README.md` обе роли и их параметры. Пример качественной документации ansible role [по ссылке](https://github.com/cloudalchemy/ansible-prometheus).
 
 Clickhouse: [README.md](playbook%2Froles%2Fclickhouse%2FREADME.md)
 
-LightHouse: [README.md](playbook%2Froles%2FLightHouse%2FREADME.md)
+LightHouse: https://github.com/Evgenyi26rus/LightHouse/blob/master/README.md
 
-Vector: [README.md](playbook%2Froles%2FVector%2FREADME.md)
+Vector: https://github.com/Evgenyi26rus/vector-role/blob/master/README.md
 
 7. Повторите шаги 3–6 для LightHouse. Помните, что одна роль должна настраивать один продукт.
 8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
