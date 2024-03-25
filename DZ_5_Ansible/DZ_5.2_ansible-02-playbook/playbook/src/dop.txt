@@ -1,7 +1,7 @@
 
-ansible-playbook -i inventory/test.yml site.yml 
+ansible-playbook -i inventory/test.yml site.yml
 
-ansible-inventory -i inventory/test.yml --graph 
+ansible-inventory -i inventory/test.yml --graph
 ansible-inventory -i inventory/prod.yml --graph
 
 ansible-inventory -i inventory/prod.yml --list

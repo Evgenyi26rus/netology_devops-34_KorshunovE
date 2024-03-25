@@ -1,0 +1,7 @@
+molecule init role --driver-name <driver> <rolename> - инициировать новую роль со сценарием тестирования default с выбранным драйвером
+molecule init scenario --driver-name <driver> <scenarioname> - инициировать новый сценарий тестирования с выбранным драйвером
+molecule test - запуск полного сценария тестирования
+molecule test --destroy=never - запуск полного сценария тестирования без разрушения инфраструктуры после прогона
+molecule matrix <taskname> - определение матрицы этапов для запуска таски во всех сценариях
+molecule matrix -s <scenarioname> <taskname> - определение матрицы этапов для запуска таски во указанном сценарии
+molecule <taskname> - запуск отдельной таски тестирования
