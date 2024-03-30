@@ -1,0 +1,6 @@
+projectKey=pervii
+serverUrl=http://158.160.122.167:9000
+serverVersion=9.1.0.47736
+dashboardUrl=http://158.160.122.167:9000/dashboard?id=pervii
+ceTaskId=AY6PryrbP-UB8jEkYDt9
+ceTaskUrl=http://158.160.122.167:9000/api/ce/task?id=AY6PryrbP-UB8jEkYDt9

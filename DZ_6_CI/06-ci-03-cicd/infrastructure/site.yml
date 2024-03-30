@@ -65,7 +65,7 @@
         state: present
 
     - name: Init template1 DB
-      command: /usr/pgsql-11/bin/postgresql-11-setup initdb
+      command: /usr/pgsql-12/bin/postgresql-12-setup initdb
       failed_when: false
 
     - name: Start pgsql service
@@ -94,7 +94,7 @@
     - name: Copy pg_hba.conf
       copy:
         src: pg_hba.conf
-        dest: /var/lib/pgsql/11/data/pg_hba.conf
+        dest: /var/lib/pgsql/12/data/pg_hba.conf
         mode: 0600
         owner: postgres
         group: postgres
@@ -117,7 +117,7 @@
       authorized_key:
         user: "{{ sonarqube_db_user }}"
         state: present
-        key: "{{ lookup('file', 'id_rsa.pub') }}"
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXcX/skkKcv7hhUrGdQSLU/UrWzBAeJpSQki637qeQv"
 
     - name: "Allow group to have passwordless sudo"
       lineinfile:
@@ -222,6 +222,7 @@
         port: 9000
         delay: 3
         timeout: 300
+
 - name: Get Nexus installed
   hosts: nexus
   pre_tasks:

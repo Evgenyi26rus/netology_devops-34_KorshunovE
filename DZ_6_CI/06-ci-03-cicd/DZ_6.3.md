@@ -4,11 +4,23 @@
 
 1. Создайте два VM в Yandex Cloud с параметрами: 2CPU 4RAM Centos7 (остальное по минимальным требованиям).
 2. Пропишите в [inventory](infrastructure/inventory/cicd/hosts.yml) [playbook](infrastructure/site.yml) созданные хосты.
+
+[hosts.yml](infrastructure%2Finventory%2Fcicd%2Fhosts.yml)
+
 3. Добавьте в [files](./infrastructure/files/) файл со своим публичным ключом (id_rsa.pub). Если ключ называется иначе — найдите таску в плейбуке, которая использует id_rsa.pub имя, и исправьте на своё.
+
+[site.yml](infrastructure%2Fsite.yml)
+
 4. Запустите playbook, ожидайте успешного завершения.
 5. Проверьте готовность SonarQube через [браузер](http://localhost:9000).
+
+![6.3.05.png](picture%2F6.3.05.png)
+
 6. Зайдите под admin\admin, поменяйте пароль на свой.
 7.  Проверьте готовность Nexus через [бразуер](http://localhost:8081).
+
+![6.3.0.7.png](picture%2F6.3.0.7.png)
+
 8. Подключитесь под admin\admin123, поменяйте пароль, сохраните анонимный доступ.
 
 ## Знакомоство с SonarQube
@@ -19,10 +31,22 @@
 2. Скачайте пакет sonar-scanner, который вам предлагает скачать SonarQube.
 3. Сделайте так, чтобы binary был доступен через вызов в shell (или поменяйте переменную PATH, или любой другой, удобный вам способ).
 4. Проверьте `sonar-scanner --version`.
+
+![6.3.1.4.png](picture%2F6.3.1.4.png)
+
 5. Запустите анализатор против кода из директории [example](example) с дополнительным ключом `-Dsonar.coverage.exclusions=fail.py`.
+
+![6.3.1.5.png](picture%2F6.3.1.5.png)
+
 6. Посмотрите результат в интерфейсе.
+
+![6.3.1.6.png](picture%2F6.3.1.6.png)
+
 7. Исправьте ошибки, которые он выявил, включая warnings.
 8. Запустите анализатор повторно — проверьте, что QG пройдены успешно.
+
+![6.3.1.8.png](picture%2F6.3.1.8.png)
+
 9. Сделайте скриншот успешного прохождения анализа, приложите к решению ДЗ.
 
 ## Знакомство с Nexus
@@ -39,7 +63,12 @@
    
 2. В него же загрузите такой же артефакт, но с version: 8_102.
 3. Проверьте, что все файлы загрузились успешно.
+
+![6.3.2.3.png](picture%2F6.3.2.3.png)
+
 4. В ответе пришлите файл `maven-metadata.xml` для этого артефекта.
+
+[maven-metadata.xml](mvn%2Fmaven-metadata.xml)
 
 ### Знакомство с Maven
 
@@ -50,6 +79,11 @@
 3. Удалите из `apache-maven-<version>/conf/settings.xml` упоминание о правиле, отвергающем HTTP- соединение — раздел mirrors —> id: my-repository-http-unblocker.
 4. Проверьте `mvn --version`.
 5. Заберите директорию [mvn](mvn) с pom.
+
+[pom.xml](mvn%2Fpom.xml)
+
+![6.3.2.4.png](picture%2F6.3.2.4.png)
+
 
 ### Основная часть
 
