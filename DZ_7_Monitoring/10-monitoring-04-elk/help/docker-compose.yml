@@ -15,8 +15,9 @@ services:
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es-hot,es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
-      - node.roles=master,data_content,data_hot  
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - node.roles=master,data_content,data_hot
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "http.host=0.0.0.0"
       - xpack.security.enabled=false
     volumes:
@@ -44,11 +45,12 @@ services:
       - discovery.seed_hosts=es-hot,es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
       - node.roles=master,data_warm
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - xpack.security.enabled=false
       - "http.host=0.0.0.0"
     volumes:
-      - data02:/usr/share/elasticsearch/data:Z
+      - data02:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -82,8 +84,8 @@ services:
       - 5046:5046
       - 5044:5044
     volumes:
-      - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:Z
-      - ./configs/logstash.yml:/opt/logstash/config/logstash.yml:Z
+      - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./configs/logstash.yml:/opt/logstash/config/logstash.yml
     networks:
       - elastic
     depends_on:
@@ -97,9 +99,9 @@ services:
     user: root
     command: filebeat -e -strict.perms=false
     volumes:
-      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:Z
-      - /var/lib/docker:/var/lib/docker:Z
-      - /var/run/docker.sock:/var/run/docker.sock:Z
+      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /data/docker:/var/lib/docker
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - logstash
     networks:
@@ -123,3 +125,4 @@ volumes:
 networks:
   elastic:
     driver: bridge
+
