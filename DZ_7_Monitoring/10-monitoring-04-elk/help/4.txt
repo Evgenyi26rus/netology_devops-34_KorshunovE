@@ -1,27 +1,184 @@
-[2024-05-17T16:24:54.776+00:00][INFO ][node] Kibana process configured with roles: [background_tasks, ui]
-[2024-05-17T16:25:22.148+00:00][INFO ][plugins-service] Plugin "cloudChat" is disabled.
-[2024-05-17T16:25:22.151+00:00][INFO ][plugins-service] Plugin "cloudExperiments" is disabled.
-[2024-05-17T16:25:22.151+00:00][INFO ][plugins-service] Plugin "cloudFullStory" is disabled.
-[2024-05-17T16:25:22.151+00:00][INFO ][plugins-service] Plugin "cloudGainsight" is disabled.
-[2024-05-17T16:25:22.159+00:00][INFO ][plugins-service] Plugin "profiling" is disabled.
-[2024-05-17T16:25:22.254+00:00][INFO ][http.server.Preboot] http server running at http://0.0.0.0:5601
-[2024-05-17T16:25:22.298+00:00][INFO ][plugins-system.preboot] Setting up [1] plugins: [interactiveSetup]
-[2024-05-17T16:25:22.424+00:00][WARN ][config.deprecation] The default mechanism for Reporting privileges will work differently in future versions, which will affect the behavior of this cluster. Set "xpack.reporting.roles.enabled" to "false" to adopt the future behavior before upgrading.
-[2024-05-17T16:25:22.701+00:00][INFO ][plugins-system.standard] Setting up [132] plugins: [translations,monitoringCollection,licensing,globalSearch,globalSearchProviders,features,mapsEms,licenseApiGuard,customBranding,usageCollection,taskManager,cloud,guidedOnboarding,telemetryCollectionManager,telemetryCollectionXpack,kibanaUsageCollection,share,screenshotMode,banners,newsfeed,ftrApis,fieldFormats,expressions,screenshotting,dataViews,charts,esUiShared,customIntegrations,home,searchprofiler,painlessLab,grokdebugger,management,cloudDataMigration,advancedSettings,spaces,security,snapshotRestore,lists,encryptedSavedObjects,telemetry,licenseManagement,files,eventLog,actions,notifications,console,contentManagement,bfetch,data,watcher,fileUpload,ingestPipelines,ecsDataQualityDashboard,alerting,unifiedSearch,unifiedFieldList,savedSearch,savedObjects,graph,savedObjectsTagging,savedObjectsManagement,eventAnnotation,embeddable,reporting,uiActionsEnhanced,presentationUtil,expressionShape,expressionRevealImage,expressionRepeatImage,expressionMetric,expressionImage,controls,dataViewFieldEditor,triggersActionsUi,transform,stackConnectors,stackAlerts,ruleRegistry,visualizations,canvas,visTypeXy,visTypeVislib,visTypeVega,visTypeTimeseries,visTypeTimelion,visTypeTagcloud,visTypeTable,visTypeMetric,visTypeHeatmap,visTypeMarkdown,dashboard,dashboardEnhanced,expressionXY,expressionTagcloud,expressionPartitionVis,visTypePie,expressionMetricVis,expressionLegacyMetricVis,expressionHeatmap,expressionGauge,lens,maps,cases,timelines,sessionView,kubernetesSecurity,threatIntelligence,aiops,discover,observability,fleet,osquery,indexManagement,rollup,remoteClusters,crossClusterReplication,indexLifecycleManagement,cloudSecurityPosture,discoverEnhanced,dataVisualizer,ml,synthetics,securitySolution,infra,upgradeAssistant,monitoring,logstash,enterpriseSearch,apm,visTypeGauge,dataViewManagement]
-[2024-05-17T16:25:22.735+00:00][INFO ][custom-branding-service] CustomBrandingService registering plugin: customBranding
-[2024-05-17T16:25:22.740+00:00][INFO ][plugins.taskManager] TaskManager is identified by the Kibana UUID: 91cdad84-99a4-4d24-9fa4-3969193f39fd
-[2024-05-17T16:25:22.839+00:00][WARN ][plugins.security.config] Generating a random key for xpack.security.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.security.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:22.840+00:00][WARN ][plugins.security.config] Session cookies will be transmitted over insecure connections. This is not recommended.
-[2024-05-17T16:25:22.869+00:00][WARN ][plugins.security.config] Generating a random key for xpack.security.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.security.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:22.870+00:00][WARN ][plugins.security.config] Session cookies will be transmitted over insecure connections. This is not recommended.
-[2024-05-17T16:25:22.882+00:00][WARN ][plugins.encryptedSavedObjects] Saved objects encryption key is not set. This will severely limit Kibana functionality. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:22.896+00:00][WARN ][plugins.actions] APIs are disabled because the Encrypted Saved Objects plugin is missing encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:22.905+00:00][INFO ][plugins.notifications] Email Service Error: Email connector not specified.
-[2024-05-17T16:25:23.004+00:00][WARN ][plugins.alerting] APIs are disabled because the Encrypted Saved Objects plugin is missing encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:23.048+00:00][WARN ][plugins.reporting.config] Generating a random key for xpack.reporting.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.reporting.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
-[2024-05-17T16:25:23.049+00:00][WARN ][plugins.reporting.config] Found 'server.host: "0.0.0.0"' in Kibana configuration. Reporting is not able to use this as the Kibana server hostname. To enable PNG/PDF Reporting to work, 'xpack.reporting.kibanaServer.hostname: localhost' is automatically set in the configuration. You can prevent this message by adding 'xpack.reporting.kibanaServer.hostname: localhost' in kibana.yml.
-[2024-05-17T16:25:23.075+00:00][INFO ][plugins.ruleRegistry] Installing common resources shared between all indices
-[2024-05-17T16:25:23.478+00:00][INFO ][plugins.cloudSecurityPosture] Registered task successfully [Task: cloud_security_posture-stats_task]
-[2024-05-17T16:25:23.843+00:00][INFO ][plugins.screenshotting.config] Chromium sandbox provides an additional layer of protection, and is supported for Linux Ubuntu 20.04 OS. Automatically enabling Chromium sandbox.
-[2024-05-17T16:25:24.985+00:00][INFO ][plugins.screenshotting.chromium] Browser executable: /usr/share/kibana/x-pack/plugins/screenshotting/chromium/headless_shell-linux_x64/headless_shell
-[2024-05-17T16:27:23.892+00:00][ERROR][elasticsearch-service] Unable to retrieve version information from Elasticsearch nodes. Request timed out
+[2024-05-24T05:02:14.858+00:00][INFO ][node] Kibana process configured with roles: [background_tasks, ui]
+[2024-05-24T05:02:44.771+00:00][INFO ][plugins-service] Plugin "cloudChat" is disabled.
+[2024-05-24T05:02:44.771+00:00][INFO ][plugins-service] Plugin "cloudExperiments" is disabled.
+[2024-05-24T05:02:44.772+00:00][INFO ][plugins-service] Plugin "cloudFullStory" is disabled.
+[2024-05-24T05:02:44.772+00:00][INFO ][plugins-service] Plugin "cloudGainsight" is disabled.
+[2024-05-24T05:02:44.785+00:00][INFO ][plugins-service] Plugin "profiling" is disabled.
+[2024-05-24T05:02:44.881+00:00][INFO ][http.server.Preboot] http server running at http://0.0.0.0:5601
+[2024-05-24T05:02:44.932+00:00][INFO ][plugins-system.preboot] Setting up [1] plugins: [interactiveSetup]
+[2024-05-24T05:02:44.986+00:00][WARN ][config.deprecation] The default mechanism for Reporting privileges will work differently in future versions, which will affect the behavior of this cluster. Set "xpack.reporting.roles.enabled" to "false" to adopt the future behavior before upgrading.
+[2024-05-24T05:02:45.358+00:00][INFO ][plugins-system.standard] Setting up [132] plugins: [translations,monitoringCollection,licensing,globalSearch,globalSearchProviders,features,mapsEms,licenseApiGuard,customBranding,usageCollection,taskManager,cloud,guidedOnboarding,telemetryCollectionManager,telemetryCollectionXpack,kibanaUsageCollection,share,screenshotMode,banners,newsfeed,ftrApis,fieldFormats,expressions,screenshotting,dataViews,charts,esUiShared,customIntegrations,home,searchprofiler,painlessLab,grokdebugger,management,cloudDataMigration,advancedSettings,spaces,security,snapshotRestore,lists,encryptedSavedObjects,telemetry,licenseManagement,files,eventLog,actions,notifications,console,contentManagement,bfetch,data,watcher,fileUpload,ingestPipelines,ecsDataQualityDashboard,alerting,unifiedSearch,unifiedFieldList,savedSearch,savedObjects,graph,savedObjectsTagging,savedObjectsManagement,eventAnnotation,embeddable,reporting,uiActionsEnhanced,presentationUtil,expressionShape,expressionRevealImage,expressionRepeatImage,expressionMetric,expressionImage,controls,dataViewFieldEditor,triggersActionsUi,transform,stackConnectors,stackAlerts,ruleRegistry,visualizations,canvas,visTypeXy,visTypeVislib,visTypeVega,visTypeTimeseries,visTypeTimelion,visTypeTagcloud,visTypeTable,visTypeMetric,visTypeHeatmap,visTypeMarkdown,dashboard,dashboardEnhanced,expressionXY,expressionTagcloud,expressionPartitionVis,visTypePie,expressionMetricVis,expressionLegacyMetricVis,expressionHeatmap,expressionGauge,lens,maps,cases,timelines,sessionView,kubernetesSecurity,threatIntelligence,aiops,discover,observability,fleet,osquery,indexManagement,rollup,remoteClusters,crossClusterReplication,indexLifecycleManagement,cloudSecurityPosture,discoverEnhanced,dataVisualizer,ml,synthetics,securitySolution,infra,upgradeAssistant,monitoring,logstash,enterpriseSearch,apm,visTypeGauge,dataViewManagement]
+[2024-05-24T05:02:45.376+00:00][INFO ][custom-branding-service] CustomBrandingService registering plugin: customBranding
+[2024-05-24T05:02:45.382+00:00][INFO ][plugins.taskManager] TaskManager is identified by the Kibana UUID: 04c18f64-d075-40ad-94cd-a4e0d0fd17b5
+[2024-05-24T05:02:45.514+00:00][WARN ][plugins.security.config] Generating a random key for xpack.security.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.security.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.514+00:00][WARN ][plugins.security.config] Session cookies will be transmitted over insecure connections. This is not recommended.
+[2024-05-24T05:02:45.546+00:00][WARN ][plugins.security.config] Generating a random key for xpack.security.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.security.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.547+00:00][WARN ][plugins.security.config] Session cookies will be transmitted over insecure connections. This is not recommended.
+[2024-05-24T05:02:45.558+00:00][WARN ][plugins.encryptedSavedObjects] Saved objects encryption key is not set. This will severely limit Kibana functionality. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.571+00:00][WARN ][plugins.actions] APIs are disabled because the Encrypted Saved Objects plugin is missing encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.578+00:00][INFO ][plugins.notifications] Email Service Error: Email connector not specified.
+[2024-05-24T05:02:45.670+00:00][WARN ][plugins.alerting] APIs are disabled because the Encrypted Saved Objects plugin is missing encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.717+00:00][WARN ][plugins.reporting.config] Generating a random key for xpack.reporting.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.reporting.encryptionKey in the kibana.yml or use the bin/kibana-encryption-keys command.
+[2024-05-24T05:02:45.718+00:00][WARN ][plugins.reporting.config] Found 'server.host: "0.0.0.0"' in Kibana configuration. Reporting is not able to use this as the Kibana server hostname. To enable PNG/PDF Reporting to work, 'xpack.reporting.kibanaServer.hostname: localhost' is automatically set in the configuration. You can prevent this message by adding 'xpack.reporting.kibanaServer.hostname: localhost' in kibana.yml.
+[2024-05-24T05:02:45.752+00:00][INFO ][plugins.ruleRegistry] Installing common resources shared between all indices
+[2024-05-24T05:02:46.091+00:00][INFO ][plugins.cloudSecurityPosture] Registered task successfully [Task: cloud_security_posture-stats_task]
+[2024-05-24T05:02:46.462+00:00][INFO ][plugins.screenshotting.config] Chromium sandbox provides an additional layer of protection, and is supported for Linux Ubuntu 20.04 OS. Automatically enabling Chromium sandbox.
+[2024-05-24T05:02:46.656+00:00][INFO ][savedobjects-service] Waiting until all Elasticsearch nodes are compatible with Kibana before starting saved objects migrations...
+[2024-05-24T05:02:46.657+00:00][INFO ][savedobjects-service] Starting saved objects migrations
+[2024-05-24T05:02:46.713+00:00][INFO ][savedobjects-service] [.kibana_task_manager] INIT -> CREATE_NEW_TARGET. took: 32ms.
+[2024-05-24T05:02:46.717+00:00][INFO ][savedobjects-service] [.kibana] INIT -> CREATE_NEW_TARGET. took: 41ms.
+[2024-05-24T05:02:47.511+00:00][INFO ][savedobjects-service] [.kibana_task_manager] CREATE_NEW_TARGET -> MARK_VERSION_INDEX_READY. took: 798ms.
+[2024-05-24T05:02:47.580+00:00][INFO ][savedobjects-service] [.kibana] CREATE_NEW_TARGET -> MARK_VERSION_INDEX_READY. took: 863ms.
+[2024-05-24T05:02:47.689+00:00][INFO ][savedobjects-service] [.kibana_task_manager] MARK_VERSION_INDEX_READY -> DONE. took: 177ms.
+[2024-05-24T05:02:47.689+00:00][INFO ][savedobjects-service] [.kibana_task_manager] Migration completed after 1008ms
+[2024-05-24T05:02:47.791+00:00][INFO ][savedobjects-service] [.kibana] MARK_VERSION_INDEX_READY -> DONE. took: 210ms.
+[2024-05-24T05:02:47.791+00:00][INFO ][savedobjects-service] [.kibana] Migration completed after 1115ms
+[2024-05-24T05:02:47.796+00:00][INFO ][plugins-system.preboot] Stopping all plugins.
+[2024-05-24T05:02:47.799+00:00][INFO ][plugins-system.standard] Starting [132] plugins: [translations,monitoringCollection,licensing,globalSearch,globalSearchProviders,features,mapsEms,licenseApiGuard,customBranding,usageCollection,taskManager,cloud,guidedOnboarding,telemetryCollectionManager,telemetryCollectionXpack,kibanaUsageCollection,share,screenshotMode,banners,newsfeed,ftrApis,fieldFormats,expressions,screenshotting,dataViews,charts,esUiShared,customIntegrations,home,searchprofiler,painlessLab,grokdebugger,management,cloudDataMigration,advancedSettings,spaces,security,snapshotRestore,lists,encryptedSavedObjects,telemetry,licenseManagement,files,eventLog,actions,notifications,console,contentManagement,bfetch,data,watcher,fileUpload,ingestPipelines,ecsDataQualityDashboard,alerting,unifiedSearch,unifiedFieldList,savedSearch,savedObjects,graph,savedObjectsTagging,savedObjectsManagement,eventAnnotation,embeddable,reporting,uiActionsEnhanced,presentationUtil,expressionShape,expressionRevealImage,expressionRepeatImage,expressionMetric,expressionImage,controls,dataViewFieldEditor,triggersActionsUi,transform,stackConnectors,stackAlerts,ruleRegistry,visualizations,canvas,visTypeXy,visTypeVislib,visTypeVega,visTypeTimeseries,visTypeTimelion,visTypeTagcloud,visTypeTable,visTypeMetric,visTypeHeatmap,visTypeMarkdown,dashboard,dashboardEnhanced,expressionXY,expressionTagcloud,expressionPartitionVis,visTypePie,expressionMetricVis,expressionLegacyMetricVis,expressionHeatmap,expressionGauge,lens,maps,cases,timelines,sessionView,kubernetesSecurity,threatIntelligence,aiops,discover,observability,fleet,osquery,indexManagement,rollup,remoteClusters,crossClusterReplication,indexLifecycleManagement,cloudSecurityPosture,discoverEnhanced,dataVisualizer,ml,synthetics,securitySolution,infra,upgradeAssistant,monitoring,logstash,enterpriseSearch,apm,visTypeGauge,dataViewManagement]
+[2024-05-24T05:02:49.055+00:00][INFO ][plugins.fleet] Task Fleet-Usage-Sender-1.1.0 scheduled with interval 1h
+[2024-05-24T05:02:49.083+00:00][INFO ][plugins.monitoring.monitoring] config sourced from: production cluster
+[2024-05-24T05:02:50.644+00:00][INFO ][http.server.Kibana] http server running at http://0.0.0.0:5601
+[2024-05-24T05:02:50.758+00:00][INFO ][plugins.monitoring.monitoring.kibana-monitoring] Starting monitoring stats collection
+[2024-05-24T05:02:50.838+00:00][INFO ][status] Kibana is now degraded
+[2024-05-24T05:02:50.950+00:00][INFO ][plugins.screenshotting.chromium] Browser executable: /usr/share/kibana/x-pack/plugins/screenshotting/chromium/headless_shell-linux_x64/headless_shell
+[2024-05-24T05:02:51.181+00:00][INFO ][plugins.fleet] Task Fleet-Usage-Logger-Task scheduled with interval 15m
+[2024-05-24T05:02:52.436+00:00][INFO ][plugins.ruleRegistry] Installed common resources shared between all indices
+[2024-05-24T05:02:52.436+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .alerts-observability.uptime.alerts
+[2024-05-24T05:02:52.437+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .alerts-security.alerts
+[2024-05-24T05:02:52.438+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .preview.alerts-security.alerts
+[2024-05-24T05:02:52.438+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .alerts-observability.logs.alerts
+[2024-05-24T05:02:52.438+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .alerts-observability.metrics.alerts
+[2024-05-24T05:02:52.439+00:00][INFO ][plugins.ruleRegistry] Installing resources for index .alerts-observability.apm.alerts
+[2024-05-24T05:02:52.674+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .alerts-observability.apm.alerts
+[2024-05-24T05:02:52.675+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .alerts-observability.logs.alerts
+[2024-05-24T05:02:52.676+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .alerts-observability.uptime.alerts
+[2024-05-24T05:02:52.676+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .alerts-observability.metrics.alerts
+[2024-05-24T05:02:52.677+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .alerts-security.alerts
+[2024-05-24T05:02:53.035+00:00][INFO ][plugins.ruleRegistry] Installed resources for index .preview.alerts-security.alerts
+[2024-05-24T05:02:54.211+00:00][INFO ][plugins.fleet] Running Fleet Usage telemetry send task
+[2024-05-24T05:02:57.022+00:00][INFO ][plugins.securitySolution.endpoint:metadata-check-transforms-task:0.0.1] no endpoint installation found
+[2024-05-24T05:02:58.341+00:00][INFO ][status] Kibana is now available (was degraded)
+[2024-05-24T05:02:58.358+00:00][INFO ][plugins.reporting.store] Creating ILM policy for managing reporting indices: kibana-reporting
+[2024-05-24T05:02:59.876+00:00][INFO ][plugins.fleet] Fleet Usage: {"agents_enabled":true,"agents":{"total_enrolled":0,"healthy":0,"unhealthy":0,"offline":0,"inactive":0,"unenrolled":0,"total_all_statuses":0,"updating":0},"fleet_server":{"total_all_statuses":0,"total_enrolled":0,"healthy":0,"unhealthy":0,"offline":0,"updating":0,"num_host_urls":0}}
+[2024-05-24T05:04:26.361+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:04:59.861+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:05:30.361+00:00][WARN ][plugins.usageCollection.usage-collection.collector-set] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2024-05-24T05:05:30.361+00:00][WARN ][plugins.usageCollection.usage-collection.collector-set] Unable to fetch data from monitoring collector
+[2024-05-24T05:06:17.721+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:06:57.791+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:07:03.423+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:07:14.558+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:07:27.574+00:00][INFO ][plugins.fleet.fleet_authz_router] Kibana security must be enabled to use Fleet
+[2024-05-24T05:09:57.658+00:00][ERROR][plugins.telemetry.fetcher] Cannot reach the remote telemetry endpoint https://telemetry.elastic.co/xpack/v2/send
+[2024-05-24T05:12:32.924+00:00][ERROR][http] ResponseError: illegal_argument_exception
+	Root causes:
+		illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@elastic/transport/lib/Transport.js:479:27)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at KibanaTransport.request (/usr/share/kibana/node_modules/@kbn/core-elasticsearch-client-server-internal/src/create_transport.js:51:16)
+    at Indices.resolveIndex (/usr/share/kibana/node_modules/@elastic/elasticsearch/lib/api/api/indices.js:1059:16)
+    at /usr/share/kibana/src/plugins/data_view_management/server/routes/resolve_index.js:29:18
+    at Router.handle (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:141:30)
+    at handler (/usr/share/kibana/node_modules/@kbn/core-http-router-server-internal/src/router.js:107:50)
+    at exports.Manager.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+    at Object.internals.handler (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:46:20)
+    at exports.execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/handler.js:31:20)
+    at Request._lifecycle (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:371:32)
+    at Request._execute (/usr/share/kibana/node_modules/@hapi/hapi/lib/request.js:281:9)
+[2024-05-24T05:17:59.891+00:00][INFO ][plugins.fleet] Fleet Usage: {"agents_enabled":true,"agents":{"total_enrolled":0,"healthy":0,"unhealthy":0,"offline":0,"inactive":0,"unenrolled":0,"total_all_statuses":0,"updating":0},"fleet_server":{"total_all_statuses":0,"total_enrolled":0,"healthy":0,"unhealthy":0,"offline":0,"updating":0,"num_host_urls":0}}
