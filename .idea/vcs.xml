@@ -7,5 +7,6 @@
     <mapping directory="$PROJECT_DIR$/DZ_5_Ansible/DZ_5.4_ansible-04-role/playbook/roles/LightHouse" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/DZ_5_Ansible/DZ_5.4_ansible-04-role/playbook/roles/Vector" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/DZ_7_Monitoring/10-monitoring-02-systems/sandbox" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DZ_8_micros-homeworks" vcs="Git" />
   </component>
 </project>

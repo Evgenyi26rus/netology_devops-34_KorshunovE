@@ -16,10 +16,9 @@ services:
       - discovery.seed_hosts=es-hot,es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
       - node.roles=master,data_content,data_hot
-      - "ES_JAVA_OPTS=-512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "http.host=0.0.0.0"
       - xpack.security.enabled=false
-      - xpack.reporting.roles.enabled=false
     volumes:
       - data01:/usr/share/elasticsearch/data:Z
     ulimits:
@@ -31,7 +30,6 @@ services:
         hard: 65536
     ports:
       - 9200:9200
-      - 9300:9300
     networks:
       - elastic
     depends_on:
@@ -46,10 +44,9 @@ services:
       - discovery.seed_hosts=es-hot,es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
       - node.roles=master,data_warm
-      - "ES_JAVA_OPTS=-512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - xpack.security.enabled=false
       - "http.host=0.0.0.0"
-      - xpack.reporting.roles.enabled=false
     volumes:
       - data02:/usr/share/elasticsearch/data:Z
     ulimits:
@@ -59,9 +56,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    #ports:
-      #- 9200:9200
-      #- 9300:9300
     networks:
       - elastic
 
