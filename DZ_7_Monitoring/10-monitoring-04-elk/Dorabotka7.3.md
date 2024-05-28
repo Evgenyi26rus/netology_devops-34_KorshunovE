@@ -1,5 +1,4 @@
-Основной файл с ДЗ https://github.com
-/Evgenyi26rus/netology_devops-34_KorshunovE/blob/main/DZ_7_Monitoring/10-monitoring-04-elk/7.3.md
+Основной файл с ДЗ https://github.com/Evgenyi26rus/netology_devops-34_KorshunovE/blob/main/DZ_7_Monitoring/10-monitoring-04-elk/7.3.md
 
 Спасибо за работу, попробуйте добавить в es-hot и es-warm порты 9300:9300 и где нет 9200:9200, в ошибке 9300 используется
 
@@ -13,13 +12,17 @@
 
 ----------------------------
 
-Действия с памятью делал ещё перед первой сдачей этого задания, ошибка не исчезала, причём память прописывал разную (1, 2 г). Сейчас добился выполнения 1-го пункта, но на втором не подтягиваются данные, проблему так и не смог найти.
+Кибана не может подключиться к эластику - illegal_argument_exception: node [es-hot] does not have the remote cluster client role enabled. Попробуйте добавить ноде роль в node.roles remote_cluster_client - это в docker-compose (discuss.elastic.co...ole/266294)
 
-![7.3.2.2.png](picture%2F7.3.2.2.png)
+----------------------------
 
-![7.3.2.3.png](picture%2F7.3.2.3.png)
+Вроде что-то получилось:
 
-![7.3.2.4.png](picture%2F7.3.2.4.png)
+![7.3.2.5.png](picture%2F7.3.2.5.png)
+
+![7.2.3.6.png](picture%2F7.2.3.6.png)
+
+![7.2.3.7.png](picture%2F7.2.3.7.png)
 
 Более детальные логи: 
 
