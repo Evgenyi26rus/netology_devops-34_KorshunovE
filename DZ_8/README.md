@@ -11,7 +11,7 @@
 
 1. [Введение в микросервисы](DZ_8_1_11-microservices-01-intro.md).
 
-2. [Микросервисы: принципы](11-microservices-02-principles.md).
+2. [Микросервисы: принципы](DZ_8_2_11-microservices-02-principles).
 
 3. [Микросервисы: подходы](11-microservices-03-approaches.md).
 
