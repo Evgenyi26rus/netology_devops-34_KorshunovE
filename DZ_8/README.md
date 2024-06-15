@@ -13,6 +13,6 @@
 
 2. [Микросервисы: принципы](DZ_8_2_11-microservices-02-principles).
 
-3. [Микросервисы: подходы](11-microservices-03-approaches.md).
+3. [Микросервисы: подходы](DZ_8_3_11-microservices-03-approaches).
 
 4. [Микросервисы: масштабирование](11-microservices-04-scaling.md).
