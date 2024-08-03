@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: zadanie1
+ namespace: netology
+ labels:
+   app: volume
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volume
+  template:
+    metadata:
+      labels:
+        app: volume
+    spec:
+      volumes:
+        - name: test
+          emptyDir: { }
+      containers:
+      - name: busybox
+        image: busybox:1.28
+        command: ['sh', '-c', 'watch -n 5 echo "Privet stydent" >> /netology/123.txt']
+        volumeMounts:
+        - name: test
+          mountPath: /netology
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: test
+          mountPath: /netology
+

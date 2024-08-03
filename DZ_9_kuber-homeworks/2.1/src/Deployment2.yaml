@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: zadanie2
+ namespace: netology
+ labels:
+   app: volume2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volume2
+  template:
+    metadata:
+      labels:
+        app: volume2
+    spec:
+      volumes:
+        - name: test2
+          hostPath:
+            path: /var/log/syslog
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: test2
+          mountPath: /var2
+
