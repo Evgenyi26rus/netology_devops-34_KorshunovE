@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: zadanie1
+ labels:
+   app: volume
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volume
+  template:
+    metadata:
+      labels:
+        app: volume
+    spec:
+      volumes:
+        - name: test-pvc
+          persistentVolumeClaim:
+            claimName: pvc-1
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: test-pvc
+          mountPath: /netology
+

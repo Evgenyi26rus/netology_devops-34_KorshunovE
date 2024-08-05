@@ -1,0 +1,12 @@
+# pvc-nfs.yaml https://microk8s.io/docs/how-to-nfs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-1
+spec:
+  storageClassName: nfs-csi
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 10Mi
