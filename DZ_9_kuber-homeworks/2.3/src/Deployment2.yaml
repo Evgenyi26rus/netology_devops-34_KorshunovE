@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-2
+ namespace: netology
+ labels:
+   app: nginx2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx2
+  template:
+    metadata:
+      labels:
+        app: nginx2
+    spec:
+      containers:
+      - name: nginx2
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+          - name: nginx-web
+            mountPath: /usr/share/nginx/html/
+          - name: nginx-tls
+            mountPath: /etc/nginx/ssl
+
+      volumes:
+      - name: nginx-web
+        configMap:
+          name: nginx-cm2
+          items:
+            - key: index.html
+              path: index.html
+      - name: nginx-tls
+        secret:
+          secretName: nginx-tls
