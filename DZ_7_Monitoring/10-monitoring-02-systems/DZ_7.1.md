@@ -95,7 +95,11 @@ push/pull: Zabbix, VictoriaMetrics
 P.S.: если при запуске некоторые контейнеры будут падать с ошибкой - проставьте им режим `Z`, например
 `./data:/var/lib:Z`
 
-![7.1.7.png](picture%2F7.1.7.png)
+[sandbox](sandbox)
+
+[docker-compose.yml](sandbox/docker-compose.yml)
+
+![7.1.0.1.png](picture/7.1.0.1.png)
 
 #
 8. Перейдите в веб-интерфейс Chronograf (http://localhost:8888) и откройте вкладку Data explorer.
@@ -107,18 +111,7 @@ P.S.: если при запуске некоторые контейнеры б�
 
 Для выполнения задания приведите скриншот с отображением метрик утилизации cpu из веб-интерфейса.
 
-![7.1.8.png](picture%2F7.1.8.png)
-
-В интерфейсе не выбирается БД telegraf.autogen, следуя инструкции https://github.com/influxdata/sandbox/blob/master/README.md, никакие манипуляции к результату не приводят.
-
-Версия доккер:
-```
-korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_7_Monitoring/10-monitoring-02-systems/sandbox$ docker -v
-Docker version 20.10.21, build 20.10.21-0ubuntu1~20.04.2
-korshunovi@korshunovi:~/PycharmProjects/netology_devops-34_KorshunovE/DZ_7_Monitoring/10-monitoring-02-systems/sandbox$ docker-compose -v
-docker-compose version 1.25.0, build unknown
-```
-[docker-compose.yml](sandbox%2Fdocker-compose.yml)
+![7.1.0.2.png](picture/7.1.0.2.png)
 
 #
 9. Изучите список [telegraf inputs](https://github.com/influxdata/telegraf/tree/master/plugins/inputs). 
@@ -150,10 +143,4 @@ docker-compose version 1.25.0, build unknown
 
 Факультативно можете изучить какие метрики собирает telegraf после выполнения данного задания.
 
-Все настройки были изначально прописаны в конфигурационных файлах, но БД так и не подтягивалась, хотя в самой оболочки контейнера настройки прописались, ниже на скриншотах показано:
-
-![7.1.9.0.png](picture%2F7.1.9.0.png)
-
-![7.1.9.1.png](picture%2F7.1.9.1.png)
-
-![7.1.9.2.png](picture%2F7.1.9.2.png)
+![7.1.0.3.png](picture/7.1.0.3.png)
