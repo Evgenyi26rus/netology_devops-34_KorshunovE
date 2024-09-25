@@ -42,7 +42,7 @@ services:
       - node.name=es-warm
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es-hot,es-warm
-      - cluster.initial_master_nodes=es-hot,es-warm,
+      - cluster.initial_master_nodes=es-hot,es-warm
       - node.roles=master,data_warm,remote_cluster_client
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - xpack.security.enabled=false
