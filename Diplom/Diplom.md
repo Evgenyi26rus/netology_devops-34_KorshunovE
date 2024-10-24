@@ -164,7 +164,7 @@ https://hub.docker.com/layers/korshunove/diplom-app/1/images/sha256-b069e10a45dc
 1. Задеплоить в кластер [prometheus](https://prometheus.io/), [grafana](https://grafana.com/), [alertmanager](https://github.com/prometheus/alertmanager), [экспортер](https://github.com/prometheus/node_exporter) основных метрик Kubernetes.
 
 Ответ:
-Мониторинг разворачивал с помощью "kube-prometheus". Графана доступна по ссылке: http://89.169.132.148:32000, подключение стандартное (admin/admin)
+Мониторинг разворачивал с помощью "kube-prometheus". Графана доступна по ссылке: http://130.193.37.168:32000, подключение стандартное (admin/admin)
 На скриншотах видно, что при диплое приложения, данные сразу начали отображаться на дашбордах:
 
 [svc_grafana.yaml](monitoring/svc_grafana.yaml)
@@ -233,7 +233,7 @@ statefulset.apps/prometheus-k8s      2/2     17h
 
 2. Задеплоить тестовое приложение, например, [nginx](https://www.nginx.com/) сервер отдающий статическую страницу.
 
-Ответ: Тестовое приложение доступно по ссылке: http://89.169.132.148:32002/ Разворачивалось с помощью деплоя и сервиса с типом NodePort: 
+Ответ: Тестовое приложение доступно по ссылке: http://130.193.37.168:32002/ Разворачивалось с помощью деплоя и сервиса с типом NodePort: 
 
 https://github.com/Evgenyi26rus/app
 ~~~
@@ -331,8 +331,8 @@ https://github.com/Evgenyi26rus/app/blob/master/Dockerfile
 
 6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
 
-Grafana: http://89.169.132.148:32000   admin/admin
+Grafana: http://130.193.37.168:32000   admin/admin
 
-Приложение: http://89.169.132.148:32002/
+Приложение: http://130.193.37.168:32002/
 
 7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
